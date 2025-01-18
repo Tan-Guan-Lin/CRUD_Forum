@@ -22,7 +22,7 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if middleware.LoginAuth(userResponse.Username, userResponse.Password) {
+	if middleware.LoginAuth(userResponse) {
 		w.WriteHeader(http.StatusOK)
 		w.Write([]byte("Login successful"))
 		return

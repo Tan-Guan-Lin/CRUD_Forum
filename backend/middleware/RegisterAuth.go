@@ -16,7 +16,7 @@ func RegisterAuth(User models.UserResponse) error {
 
 	var username string = User.Username
 
-	if str, err := db.Fetchlogin(username, database); err != nil && str == ""{
+	if bt, err := db.Fetchlogin(username, database); err != nil && bt == nil{
 		if err.Error() == "user not found"{			
 			hashedPassword, err := bcrypt.GenerateFromPassword([]byte(User.Password), bcrypt.DefaultCost)
 			if err != nil {
